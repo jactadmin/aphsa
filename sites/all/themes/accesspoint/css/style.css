@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:600");
+
+/* ===================================================================
+ *
+ * General
+ *
+ * ================================================================ */
+
+body {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+/* ===================================================================
+ *
+ * Typo
+ *
+ * ================================================================ */
+
+h2.block-title {
+  font-size: 20px;
+}
+
+
+
+/* ===================================================================
+ *
+ * Bootstrap/Bootswatch overrides 
+ *
+ * ================================================================ */
+ 
+.panel-title {
+ font-weight: bold;
+}
+
+/* ===================================================================
+ *
+ * Layout
+ *
+ * ================================================================ */
+
+#navbar {
+  background-color: transparent;
+  border: none;
+}
+
+#navbar .navbar-nav>li>a {
+  padding-top: 33px;
+  padding-bottom: 33px;
+}
+
+.logo.navbar-btn:hover {
+  margin-top: 6px;
+}
+
+#custom-jumbotron {
+  margin-bottom:30px;
+  background-image:url('../images/home-header-bg.jpg');
+  background-size: 100%;
+  background-position: top center;
+  padding-top:30px;
+  background-size:cover;
+  min-height: 500px;
+}
+
+#custom-jumbotron h1 {
+  font-size: 53px;
+  width: 488px;
+}
+
+#custom-jumbotron h1 sup {
+  font-size: 20px;
+  top: -.7em;
+}
+
+.region-sidebar-first .block ul {
+  padding-left: 0;
+}
+
+input[type="checkbox"].facetapi-checkbox {
+  margin-right: 6px;
+}
+
+/* ===================================================================
+ *
+ * Providers
+ *
+ * ================================================================ */
+
+.node-providers > .row {
+  margin-bottom: 30px;
+}
+
+.node-providers > .row:first-child > .col-sm-12 > .field {
+  margin-bottom: 10px;
+}
+
+.node-providers fieldset .panel-body {
+  font-size: .9em;
+}
+
+.node-providers fieldset .panel-body,
+.node-providers fieldset .panel-body > .field-type-entityreference .node,
+.node-providers fieldset .panel-body > .field-type-entityreference .node .field-name-field-mutual-fund > .field-items {
+  display: table;
+  width: 100%;
+}
+
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-name-field-mutual-fund > .field-items,
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-name-field-mutual-fund > .field-items > .field-item .node .field-items {
+  max-width: none;
+}
+
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node {
+  display: block;
+}
+
+.node-providers fieldset .panel-body > .field,
+.node-providers fieldset .panel-body > .field-type-entityreference,
+.node-providers fieldset .panel-body > .field-type-entityreference .node > .field,
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-name-field-mutual-fund > .field-items > .field-item {
+  display: table-row;
+}
+
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-name-field-mutual-fund > .field-items > .field-item .node {
+  display: table;
+}
+
+.node-providers fieldset .panel-body > .field:nth-child(even),
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-name-field-mutual-fund > .field-items > .field-item.even,
+.node-providers fieldset .panel-body > .field-name-field-associated-material > .field-items:first-of-type > .field-item.even,
+.node-providers fieldset .panel-body > .field-type-entityreference .node > .field > .field-item.even {
+  background: #f4f4f4; 
+}
+
+.node-providers fieldset .panel-body > .field > .field-label,
+.node-providers fieldset .panel-body > .field > .field-items,
+.node-providers fieldset .panel-body > .field-type-entityreference .node .field-label,
+.node-providers fieldset .panel-body > .field-type-entityreference .node .field-items,
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left,
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right  {
+  display: table-cell;
+  max-width: 0;
+  float: none;
+
+}
+
+.node-providers fieldset .panel-body > .field-type-entityreference .field-items {
+  max-width: none; 
+}
+
+.node-providers fieldset .panel-body > .field-label-inline > .field-label,
+.node-providers fieldset .panel-body > .field-type-entityreference .node .field-label,
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left {
+  width: 45%;
+  padding-left: 6px;
+  font-weight: 600;
+}
+
+.node-providers fieldset .panel-body > .field-label-inline > .field-items,
+.node-providers fieldset .panel-body > .field-type-entityreference.field-name-field-custodian .node .field-items,
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right {
+  padding-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 55%;
+}
+
+.node-providers fieldset .panel-body > .field-label-hidden.field-name-field-associated-material > .field-items {
+  padding-left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 98%;
+}
+
+.node-providers fieldset .panel-body > .field-label-inline > .field-items .field-item:only-of-type,
+.node-providers fieldset .panel-body > .field.field-type-entityreference .field-label-inline .field-item:only-of-type {
+  display: inline; 
+}
+
+.node-providers fieldset.group-custodian .panel-body,
+.node-providers fieldset.group-mutual-funds .panel-body,
+.node-providers fieldset.group-links-forms .panel-body,
+.node-providers fieldset .panel-body > .field-type-entityreference,
+.node-providers fieldset .panel-body > .field.field-type-entityreference > .field-items,
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node > .field-name-field-mutual-fund {
+  display: block;
+}
+
+/* ===================================================================
+ *
+ * Bootstrap Grid View
+ *
+ * ================================================================ */
+ 
+.view-access-point-search .view-filters {
+  margin-bottom: 20px;
+}
+
+.view-access-point-search .views-exposed-widgets .views-widget {
+  display: inline-block;
+  margin-left:10px;
+}
+
+.view-access-point-search .views-exposed-form .views-exposed-widget .btn {
+  margin-top: 0;
+}
+ 
+.views-bootstrap-grid-plugin-style .col {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  -webkit-transition: background .3s;
+  -moz-transition: background .3s;
+  -ms-transition: background .3s;
+  -o-transition: background .3s;
+  transition: background .3s;
+}
+
+.views-bootstrap-grid-plugin-style .col:hover {
+  background: #f8f8f8;
+  border: 1px solid #e2e2e2;
+}
+
+.views-bootstrap-grid-plugin-style .col .grid-link {
+  display: block;
+}
+
+.views-bootstrap-grid-plugin-style .grid-link:hover {
+  text-decoration: none; 
+}
+
+.views-bootstrap-grid-plugin-style .col .img-responsive {
+  margin: 0 auto;
+  vertical-align: middle;
+  display: inline;
+}
+
+.views-bootstrap-grid-plugin-style .img-helper-wrapper {
+  height: 100px;
+  display: block;
+}
+
+.views-bootstrap-grid-plugin-style .img-helper-wrapper .img-helper {
+  display: inline-block;
+  height: 100%; 
+  vertical-align: middle;
+}
+ 
+.views-bootstrap-grid-plugin-style .views-field-title {
+  line-height: 20px;
+}
+
+/* ===================================================================
+ *
+ * Responsive styles
+ *
+ * ================================================================ */
+ 
+@media (max-width: 1199px) {
+  #navbar .logo img {
+    width: 290px;
+  }
+  
+  #navbar .navbar-nav>li>a {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+  
+  #custom-jumbotron h1 {
+    font-size: 44px;
+    width: 458px;  
+  }
+}
+ 
+@media (max-width: 991px) {
+  #navbar .logo img {
+    width: 270px;
+  }
+  
+  #custom-jumbotron h1 {
+    font-size: 39px;
+    width: 358px;
+  }
+}
+
+@media (max-width: 767px) {
+  #navbar .logo img {
+    width: 210px;
+  }
+  
+  #custom-jumbotron {
+    background-image: none;
+    background-color: #003F80;
+    min-height: 0;
+    padding: 20px 10px 30px 10px;
+  }
+  
+  #custom-jumbotron h1 {
+    color: #fff;
+    font-size: 28px;
+    width: auto;
+  }
+  
+  #custom-jumbotron h1 sup {
+    font-size: 12px;
+  }
+}

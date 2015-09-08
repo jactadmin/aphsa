@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:600");
+
+/* ===================================================================
+ *
+ * General
+ *
+ * ================================================================ */
+
+body {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+/* ===================================================================
+ *
+ * Bootstrap/Bootswatch overrides 
+ *
+ * ================================================================ */
+ 
+ .panel-title {
+   font-weight: bold;
+ }
+
+/* ===================================================================
+ *
+ * Layout
+ *
+ * ================================================================ */
+
+#navbar {
+  background-color: transparent;
+  border: none;
+}
+
+#navbar .navbar-nav>li>a {
+  padding-top: 33px;
+  padding-bottom: 33px;
+}
+
+.logo.navbar-btn:hover {
+  margin-top: 6px;
+}
+
+#custom-jumbotron {
+  margin-bottom:30px;
+  background-image:url('../images/home-header-bg.jpg');
+  background-size: 100%;
+  background-position: top center;
+  padding-top:30px;
+  background-size:cover;
+  min-height: 500px;
+}
+
+#custom-jumbotron h1 {
+  font-size: 53px;
+  width: 488px;
+}
+
+#custom-jumbotron h1 sup {
+  font-size: 20px;
+  top: -.7em;
+}
+
+/* ===================================================================
+ *
+ * Providers
+ *
+ * ================================================================ */
+
+.node-providers fieldset .panel-body {
+  display: table;
+/*   table-layout: fixed; */
+  font-size: .9em;
+  width: 100%;
+}
+
+.node-providers fieldset .panel-body > .field {
+  display: table-row;
+}
+
+.node-providers fieldset .panel-body > .field:nth-child(even) {
+  background: #f4f4f4; 
+}
+
+.node-providers fieldset .panel-body > .field > .field-label,
+.node-providers fieldset .panel-body > .field > .field-items {
+  display: table-cell;
+  max-width: 0;
+  float: none;
+}
+
+.node-providers fieldset .panel-body > .field > .field-label {
+  width: 38%;
+  padding-left: 6px;
+  font-weight: 600;
+}
+
+.node-providers fieldset .panel-body > .field > .field-items {
+  padding-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 62%;
+}
+
+.node-providers fieldset .panel-body > .field > .field-items .field-item:only-of-type {
+  display: inline; 
+}
+
+/* ===================================================================
+ *
+ * Responsive styles
+ *
+ * ================================================================ */
+ 
+@media (max-width: 1199px) {
+  #navbar .logo img {
+    width: 290px;
+  }
+  
+  #navbar .navbar-nav>li>a {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+  
+  #custom-jumbotron h1 {
+    font-size: 44px;
+    width: 458px;  
+  }
+}
+ 
+@media (max-width: 991px) {
+  #navbar .logo img {
+    width: 270px;
+  }
+  
+  #custom-jumbotron h1 {
+    font-size: 39px;
+    width: 358px;
+  }
+}
+
+@media (max-width: 767px) {
+  #navbar .logo img {
+    width: 210px;
+  }
+  
+  #custom-jumbotron {
+    background-image: none;
+    background-color: #003F80;
+    min-height: 0;
+    padding: 20px 10px 30px 10px;
+  }
+  
+  #custom-jumbotron h1 {
+    color: #fff;
+    font-size: 28px;
+    width: auto;
+  }
+  
+  #custom-jumbotron h1 sup {
+    font-size: 12px;
+  }
+}
