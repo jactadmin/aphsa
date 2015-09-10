@@ -131,7 +131,8 @@ input[type="checkbox"].facetapi-checkbox {
 .node-providers fieldset .panel-body > .field:nth-child(even),
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-name-field-mutual-fund > .field-items > .field-item.even,
 .node-providers fieldset .panel-body > .field-name-field-associated-material > .field-items:first-of-type > .field-item.even,
-.node-providers fieldset .panel-body > .field-type-entityreference .node > .field > .field-item.even {
+.node-providers fieldset .panel-body > .field-type-entityreference .node > .field > .field-item.even,
+.node-providers fieldset .panel-body > #group-custodian-details .field:nth-child(even) {
   background: #f4f4f4; 
 }
 
@@ -147,14 +148,17 @@ input[type="checkbox"].facetapi-checkbox {
 
 }
 
-.node-providers fieldset .panel-body > .field-type-entityreference .field-items,
-.node-providers fieldset .panel-body > #group-custodian-details .field .field-label,
-.node-providers fieldset .panel-body > #group-custodian-details .field .field-items {
+.node-providers fieldset .panel-body > .field-type-entityreference .field-items {
   max-width: none; 
+}
+
+.node-providers fieldset .panel-body > #group-custodian-details {
+  margin-top: 20px;
 }
 
 .node-providers fieldset .panel-body > .field-label-inline > .field-label,
 .node-providers fieldset .panel-body > .field-type-entityreference .node .field-label,
+.node-providers fieldset .panel-body > #group-custodian-details .field .field-label,
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left {
   width: 45%;
   padding-left: 6px;
@@ -162,13 +166,19 @@ input[type="checkbox"].facetapi-checkbox {
 }
 
 .node-providers fieldset .panel-body > .field-label-inline > .field-items,
-.node-providers fieldset .panel-body > .field-type-entityreference.field-name-field-custodian .node .field-items,
+.node-providers fieldset .panel-body > #group-custodian-details .field .field-items,
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right {
   padding-left: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 55%;
+}
+
+.node-providers fieldset .field-name-field-custodial-agreement {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .node-providers fieldset .panel-body > .field-label-hidden.field-name-field-associated-material > .field-items {
