@@ -392,7 +392,7 @@ class SearchApiSolrConnection implements SearchApiSolrConnectionInterface {
     $system_info = $this->getSystemInfo();
     // Get our solr version number
     if (isset($system_info->lucene->{'solr-spec-version'})) {
-      return $system_info->lucene->{'solr-spec-version'}[0];
+      return (int) $system_info->lucene->{'solr-spec-version'};
     }
     return 0;
   }
@@ -603,6 +603,7 @@ class SearchApiSolrConnection implements SearchApiSolrConnectionInterface {
 
     $result = drupal_http_request($url, $options);
 
+    $result->status_message = isset($result->status_message) ? $result->status_message : '';
     if (!isset($result->code) || $result->code < 0) {
       $result->code = 0;
       $result->status_message = 'Request failed';

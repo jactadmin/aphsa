@@ -1,5 +1,10 @@
-Search API Solr Search 1.x, dev (xx/xx/xxxx):
----------------------------------------------
+Search API Solr Search 1.9 (2015-08-30):
+----------------------------------------
+- #2503829 by das-peter: Added support for grouping on "magic" fields.
+- #2503617 by tobiasb: Fixed undefined "status_message" property in HTTP
+  response object.
+- #2313591 by thePanz, nadavoid: Added support for random sorting.
+- #2004596 by drunken monkey: Fixed workarounds for MLT problems.
 - #2486533 by drunken monkey: Fixed the default operator in the Solr 5 configs.
 - #2466897 by drunken monkey: Fixed Solr version options in server settings.
 - #1918904 by arnested, ramlev, drunken monkey: Added an alter hook for

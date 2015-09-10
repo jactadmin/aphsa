@@ -321,6 +321,7 @@ class SearchApiSolrService extends SearchApiAbstractService {
       'search_api_spellcheck',
       'search_api_data_type_location',
       'search_api_data_type_geohash',
+      'search_api_random_sort',
     ));
     if (isset($supported[$feature])) {
       return TRUE;
@@ -643,6 +644,7 @@ class SearchApiSolrService extends SearchApiAbstractService {
       $ret = array(
         'search_api_id' => 'item_id',
         'search_api_relevance' => 'score',
+        'search_api_random' => 'random',
       );
 
       // Add the names of any fields configured on the index.
@@ -826,10 +828,12 @@ class SearchApiSolrService extends SearchApiAbstractService {
     $options = $query->getOptions();
     $search_fields = $query->getFields();
     // Get the index fields to be able to retrieve boosts.
-    $index_fields = $index->getFields();
+    $index_fields = $index->getFields() + array(
+      'search_api_relevance' => array('type' => 'decimal', 'indexed' => TRUE),
+      'search_api_id' => array('type' => 'integer', 'indexed' => TRUE),
+    );
     $qf = array();
     foreach ($search_fields as $f) {
-      $boost = '';
       $boost = isset($index_fields[$f]['boost']) ? '^' . $index_fields[$f]['boost'] : '';
       $qf[] = $fields[$f] . $boost;
     }
@@ -851,6 +855,17 @@ class SearchApiSolrService extends SearchApiAbstractService {
       if (substr($f, 0, 3) == 'ss_') {
         $f = 'sort_' . substr($f, 3);
       }
+
+      // The default Solr schema provides a virtual field named "random_SEED"
+      // that can be used to randomly sort the results; the field is available
+      // only at query-time.
+      if ($field == 'search_api_random') {
+        $params = $query->getOption('search_api_random_sort', array());
+        // Random seed: getting the value from parameters or computing a new one.
+        $seed = !empty($params['seed']) ? $params['seed'] : mt_rand();
+        $f = 'random_' . $seed;
+      }
+
       $order = strtolower($order);
       $sort[$field] = "$f $order";
     }
@@ -868,11 +883,16 @@ class SearchApiSolrService extends SearchApiAbstractService {
       $mlt_params['qt'] = 'mlt';
       // The fields to look for similarities in.
       $mlt_fl = array();
+      // Solr 4 (before 4.6) has a bug which results in numeric fields not being
+      // supported in MLT queries.
+      $mlt_no_numeric_fields = FALSE;
+      if ($version == 4) {
+        $system_info = $this->solr->getSystemInfo();
+        $mlt_no_numeric_fields = !isset($system_info->lucene->{'solr-spec-version'}) || version_compare($system_info->lucene->{'solr-spec-version'}, '4.6.0', '<');
+      }
       foreach($mlt['fields'] as $f) {
-        // Solr 4 has a bug which results in numeric fields not being supported
-        // in MLT queries.
         // Date fields don't seem to be supported at all.
-        if ($fields[$f][0] === 'd' || ($version == 4 && in_array($fields[$f][0], array('i', 'f')))) {
+        if ($fields[$f][0] === 'd' || ($mlt_no_numeric_fields && in_array($fields[$f][0], array('i', 'f')))) {
           continue;
         }
         $mlt_fl[] = $fields[$f];
@@ -885,6 +905,10 @@ class SearchApiSolrService extends SearchApiAbstractService {
       $id = $this->createId($index_id, $mlt['id']);
       $id = call_user_func(array($this->connection_class, 'phrase'), $id);
       $keys = 'id:' . $id;
+      // In (early versions of) Solr 5, facets aren't supported with MLT.
+      if ($version >= 5) {
+        $facet_params = array();
+      }
     }
 
     // Handle spatial filters.

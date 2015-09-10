@@ -100,6 +100,7 @@ input[type="checkbox"].facetapi-checkbox {
 }
 
 .node-providers fieldset .panel-body,
+.node-providers fieldset .panel-body > #group-custodian-details,
 .node-providers fieldset .panel-body > .field-type-entityreference .node,
 .node-providers fieldset .panel-body > .field-type-entityreference .node .field-name-field-mutual-fund > .field-items {
   display: table;
@@ -118,7 +119,8 @@ input[type="checkbox"].facetapi-checkbox {
 .node-providers fieldset .panel-body > .field,
 .node-providers fieldset .panel-body > .field-type-entityreference,
 .node-providers fieldset .panel-body > .field-type-entityreference .node > .field,
-.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-name-field-mutual-fund > .field-items > .field-item {
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-name-field-mutual-fund > .field-items > .field-item,
+.node-providers fieldset .panel-body > #group-custodian-details .field {
   display: table-row;
 }
 
@@ -135,8 +137,8 @@ input[type="checkbox"].facetapi-checkbox {
 
 .node-providers fieldset .panel-body > .field > .field-label,
 .node-providers fieldset .panel-body > .field > .field-items,
-.node-providers fieldset .panel-body > .field-type-entityreference .node .field-label,
-.node-providers fieldset .panel-body > .field-type-entityreference .node .field-items,
+.node-providers fieldset .panel-body > #group-custodian-details .field .field-label,
+.node-providers fieldset .panel-body > #group-custodian-details .field .field-items,
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left,
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right  {
   display: table-cell;
@@ -145,7 +147,9 @@ input[type="checkbox"].facetapi-checkbox {
 
 }
 
-.node-providers fieldset .panel-body > .field-type-entityreference .field-items {
+.node-providers fieldset .panel-body > .field-type-entityreference .field-items,
+.node-providers fieldset .panel-body > #group-custodian-details .field .field-label,
+.node-providers fieldset .panel-body > #group-custodian-details .field .field-items {
   max-width: none; 
 }
 
