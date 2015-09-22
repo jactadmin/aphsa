@@ -9,6 +9,7 @@
 body {
   font-size: 16px;
   line-height: 26px;
+  color: #333;
 }
 
 /* ===================================================================
@@ -17,11 +18,35 @@ body {
  *
  * ================================================================ */
 
+h1, .h1, h2, .h2, h3, .h3, p, ul, ol, form, blockquote {
+  margin-bottom: 15px;
+}
+
+ul {
+  padding-left: 1em;
+}
+
+.page-header {
+  font-weight: 600;
+}
+
 h2.block-title {
   font-size: 20px;
 }
 
+.header-copy {
+  font-size: 18px;
+  line-height: 26px;
+}
 
+.header-copy ul {
+  padding-left: .6em;
+}
+
+.header-copy li {
+  margin: 8px 0;
+  font-weight: 600;
+}
 
 /* ===================================================================
  *
@@ -39,38 +64,38 @@ h2.block-title {
  *
  * ================================================================ */
 
+#user-nav-wrapper {
+  background: #ddd;
+}
+
+#user-nav-wrapper .navbar-nav > li > a {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
 #navbar {
   background-color: transparent;
   border: none;
+  margin: 10px auto;
 }
 
-#navbar .navbar-nav>li>a {
-  padding-top: 33px;
-  padding-bottom: 33px;
+#navbar .navbar-nav > li > a {
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+#navbar .navbar-collapse.collapse {
+  padding: 0;
 }
 
 .logo.navbar-btn:hover {
   margin-top: 6px;
 }
 
-#custom-jumbotron {
-  margin-bottom:30px;
-  background-image:url('../images/home-header-bg.jpg');
-  background-size: 100%;
-  background-position: top center;
-  padding-top:30px;
-  background-size:cover;
-  min-height: 500px;
-}
-
-#custom-jumbotron h1 {
-  font-size: 53px;
-  width: 488px;
-}
-
-#custom-jumbotron h1 sup {
-  font-size: 20px;
-  top: -.7em;
+.logo.navbar-btn img {
+  max-width: 280px;
 }
 
 .region-sidebar-first .block ul {
@@ -80,6 +105,76 @@ h2.block-title {
 input[type="checkbox"].facetapi-checkbox {
   margin-right: 6px;
 }
+
+/* ===================================================================
+ *
+ * Jumbotron
+ *
+ * ================================================================ */
+
+#custom-jumbotron {
+  margin-bottom:30px;
+  background-size: 100%;
+  background-position: top center;
+  padding: 30px 0;
+  background-size:cover;
+  min-height: 220px;
+  text-shadow: 0px 0px 20px #000;
+}
+
+#custom-jumbotron h1 {
+  font-size: 53px;
+  width: 488px;
+  color: #fff;
+  margin: 100px 0 0 0;
+}
+
+#custom-jumbotron h1 sup {
+  font-size: 20px;
+  top: -.7em;
+}
+
+/* Homepage */
+
+.front #custom-jumbotron {
+  background-image:url('../images/home-header-bg.jpg');
+  min-height: 500px;
+}
+
+.front #custom-jumbotron h1 {
+  color: #333;
+  text-shadow: none;
+  margin-top: 30px;
+}
+
+/* About Us */
+
+.page-node-108 #custom-jumbotron {
+  background-image:url('../images/header-bg-about.jpg');
+}
+
+/* Services */
+
+.page-node-109 #custom-jumbotron {
+  background-image:url('../images/header-bg-services.jpg');
+}
+
+/* ===================================================================
+ *
+ * Services Page
+ *
+ * ================================================================ */
+
+ #services-wrapper {
+   padding: 15px;
+   background: #CEE7FF;
+   border-radius: 4px;
+   margin-bottom: 15px;
+ }
+ 
+ #services-wrapper ul {
+   margin: 0;
+ }
 
 /* ===================================================================
  *
@@ -277,14 +372,18 @@ input[type="checkbox"].facetapi-checkbox {
  
 @media (max-width: 1199px) {
   #navbar .logo img {
-    width: 290px;
+    max-width: 240px;
+    padding-top: 4px;
   }
   
   #navbar .navbar-nav>li>a {
     padding-top: 28px;
     padding-bottom: 28px;
+    font-size: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
-  
+
   #custom-jumbotron h1 {
     font-size: 44px;
     width: 458px;  
@@ -292,35 +391,76 @@ input[type="checkbox"].facetapi-checkbox {
 }
  
 @media (max-width: 991px) {
+  
+  #navbar .navbar-header {
+    width: 100%;
+    text-align: center;
+  }
+  
+  #navbar .logo {
+    float: none!important;
+    display: inline-block;
+    padding-right: 0;
+  }
+  
   #navbar .logo img {
     width: 270px;
+  }
+   
+  .front #custom-jumbotron,
+  #custom-jumbotron {
+    min-height: 0;
   }
   
   #custom-jumbotron h1 {
     font-size: 39px;
     width: 358px;
+    margin: 20px 0 0 0;
   }
 }
 
 @media (max-width: 767px) {
+  
+  #navbar .logo {
+    float: left!important;
+  }
+  
   #navbar .logo img {
     width: 210px;
   }
   
+  #navbar .navbar-collapse.collapse {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  #navbar .navbar-nav > li > a {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  
   #custom-jumbotron {
-    background-image: none;
     background-color: #003F80;
-    min-height: 0;
-    padding: 20px 10px 30px 10px;
+    padding: 20px 10px;
+  }
+  
+  .front #custom-jumbotron,
+  #custom-jumbotron {
+    background-image: none; 
   }
   
   #custom-jumbotron h1 {
-    color: #fff;
     font-size: 28px;
-    width: auto;
+    margin: 0;
   }
   
-  #custom-jumbotron h1 sup {
+  .front #custom-jumbotron h1 {
+    color: #fff;
+    width: auto;
+    margin: 0;
+  }
+  
+  .front #custom-jumbotron h1 sup {
     font-size: 12px;
   }
 }

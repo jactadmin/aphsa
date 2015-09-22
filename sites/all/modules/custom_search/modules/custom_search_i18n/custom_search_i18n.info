@@ -6,9 +6,9 @@ package = Search
 dependencies[] = custom_search
 dependencies[] = i18n_string
 
-; Information added by Drupal.org packaging script on 2015-07-15
-version = "7.x-1.18+4-dev"
+; Information added by Drupal.org packaging script on 2015-09-15
+version = "7.x-1.18+5-dev"
 core = "7.x"
 project = "custom_search"
-datestamp = "1436987644"
+datestamp = "1442303044"
 

@@ -442,7 +442,25 @@ function custom_search_submit($form, &$form_state) {
   $delta = (isset($form_state['values']['delta'])) ? 'blocks_' . $form_state['values']['delta'] . '_' : '';
   variable_set('custom_search_delta', $delta);
   $type = 'node';
-  $keys = $form_state['values'][$form_state['values']['form_id']];
+  $keys = trim($form_state['values'][$form_state['values']['form_id']]);
+
+  if (variable_get('custom_search_' . $delta . 'operator', 'AND') == 'OR') {
+    $exploded_keys = explode('"', ' ' . $keys); // Make sure quotes are never the first char
+    $keys_array = array();
+    for ($a = 0; $a < count($exploded_keys); $a = $a + 2) {
+      if (($a != 0 && strlen($exploded_keys[$a])) || ($a == 0 && $exploded_keys[$a] != ' ')) {
+        if ($a == 0) {
+          $exploded_keys[$a] = substr($exploded_keys[$a], 1);
+        }
+        $keys_array[] = str_replace(' ', ' OR ', $exploded_keys[$a]);
+      }
+      if (isset($exploded_keys[$a + 1])) {
+        $keys_array[] = '"' . $exploded_keys[$a + 1] . '"';
+      }
+    }
+    $keys = implode(' ', $keys_array);
+  }
+
   $original_keywords = $keys;
 
   $types = (isset($form_state['values']['custom_search_types'])) ? $form_state['values']['custom_search_types'] : array();
