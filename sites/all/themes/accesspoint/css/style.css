@@ -92,10 +92,26 @@ h2.block-title {
 }
 
 #user-nav-wrapper .navbar-nav > li > a {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 2px 8px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 13px;
+  margin: 6px 0;
+  border-radius: 4px;
+  color: #777;
+}
+
+#user-nav-wrapper .navbar-nav > li > a.login {
+  background-color: #aaa; 
+  color: #fff;
+}
+
+#user-nav-wrapper .navbar-nav > li > a:hover {
+  color: #333;
+}
+
+#user-nav-wrapper .navbar-nav > li > a.login:hover {
+  background-color: #888;
+  color: #fff;
 }
 
 #navbar {
@@ -107,6 +123,10 @@ h2.block-title {
 #navbar .navbar-nav > li > a {
   padding-top: 26px;
   padding-bottom: 26px;
+}
+
+#navbar .navbar-nav > li > a.adviserlink:after {
+  content: '\2122';
 }
 
 #navbar .navbar-collapse.collapse {
@@ -395,7 +415,7 @@ input[type="checkbox"].facetapi-checkbox {
  
 @media (max-width: 1199px) {
   #navbar .logo img {
-    max-width: 240px;
+    max-width: 220px;
     padding-top: 4px;
   }
   
@@ -403,8 +423,8 @@ input[type="checkbox"].facetapi-checkbox {
     padding-top: 28px;
     padding-bottom: 28px;
     font-size: 14px;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   #custom-jumbotron h1 {
@@ -429,16 +449,33 @@ input[type="checkbox"].facetapi-checkbox {
   #navbar .logo img {
     width: 270px;
   }
+  
+  #navbar .navbar-nav {
+    width: 100%;
+    text-align: center;
+  }
+  
+  #navbar .navbar-nav > li {
+    float: none;
+    display: inline-block;
+  }
    
-  .front #custom-jumbotron,
   #custom-jumbotron {
     min-height: 0;
+  }
+  
+  .front #custom-jumbotron {
+    min-height: 266px;
   }
   
   #custom-jumbotron h1 {
     font-size: 39px;
     width: 358px;
     margin: 20px 0 0 0;
+  }
+  
+  .front #custom-jumbotron h1 {
+    margin: 0;
   }
   
   div[class*="col-md-"] {
@@ -461,9 +498,19 @@ input[type="checkbox"].facetapi-checkbox {
     padding-right: 15px;
   }
   
+  #navbar .navbar-nav {
+    text-align: left;
+    margin-left: 0;
+    background: #f1f1f1;
+  }
+  
+  #navbar .navbar-nav > li {
+    display: block;
+  }
+  
   #navbar .navbar-nav > li > a {
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
   
   #custom-jumbotron {
@@ -473,7 +520,8 @@ input[type="checkbox"].facetapi-checkbox {
   
   .front #custom-jumbotron,
   #custom-jumbotron {
-    background-image: none; 
+    background-image: none;
+    min-height: 0;
   }
   
   #custom-jumbotron h1 {
