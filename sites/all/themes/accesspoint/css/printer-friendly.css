@@ -1,0 +1,79 @@
+/* ===================================================================
+ *
+ * Styles for printer-friendly Provider pages
+ *
+ * ================================================================ */
+ 
+.printer-friendly {
+  padding: 20px;
+}
+
+.printer-friendly .clearfix:before {
+  content: none;
+}
+
+.printer-friendly .fieldset .field {
+  line-height: 24px;
+  min-height: 20px;
+  padding: 6px 0;
+}
+
+.printer-friendly .node-providers > .row:first-child > .col-sm-12 > .field {
+  margin-bottom: 8px;
+}
+
+.printer-friendly .group-custodian {
+  margin-top: 20px;
+}
+
+.printer-friendly .field-group-fieldset .panel-body {
+  display: table;
+  width: 100%;
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field {
+  display: table-row;
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field .field-label,
+.printer-friendly .field-group-fieldset .panel-body>.field .field-items {
+  display: table-cell;
+  max-width: none;
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field .field-label {
+  width: 240px; 
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field .field-items {
+  width: 650px; 
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items {
+  width: 100%;
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items > .field-item {
+  display: table;
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items .field {
+  padding: 0;
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items .field .field-item {
+  padding-left: 12px; 
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items .field .field-label {
+  padding-left: 6px;
+}
+
+.printer-friendly .field-group-fieldset .panel-body>.field .field-items img {
+  padding-top: 4px; 
+}
