@@ -6,10 +6,24 @@
  
 .printer-friendly {
   padding: 20px;
+  font-size: 14px;
+  line-height: 22px;
 }
 
 .printer-friendly .clearfix:before {
   content: none;
+}
+
+img.print-logo {
+  width: 200px;
+}
+
+.printer-friendly hr {
+  margin: 10px 0;
+}
+
+.printer-friendly .field-name-field-company-logo img {
+  max-width: 140px;
 }
 
 .printer-friendly .fieldset .field {
@@ -18,9 +32,16 @@
   padding: 6px 0;
 }
 
+/*
 .printer-friendly .node-providers > .row:first-child > .col-sm-12 > .field {
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
+*/
+
+.printer-friendly .node-providers > .row:first-child > .col-sm-12 > .field-name-field-description {
+  margin-bottom: 12px; 
+  line-height: 20px;
+} 
 
 .printer-friendly .group-custodian {
   margin-top: 20px;
@@ -31,49 +52,79 @@
   width: 100%;
 }
 
-.printer-friendly .field-group-fieldset .panel-body>.field {
+.printer-friendly .field-group-fieldset .panel-body .field {
   display: table-row;
 }
 
-.printer-friendly .field-group-fieldset .panel-body>.field .field-label,
-.printer-friendly .field-group-fieldset .panel-body>.field .field-items {
+.printer-friendly .field-group-fieldset .panel-body .field:nth-child(even) {
+  background: #f4f4f4;
+}
+
+.printer-friendly .field-group-fieldset .panel-body .field .field-label,
+.printer-friendly .field-group-fieldset .panel-body .field .field-items {
   display: table-cell;
-  max-width: none;
 }
 
-.printer-friendly .field-group-fieldset .panel-body>.field .field-label {
-  width: 240px; 
+.printer-friendly .field-group-fieldset .panel-body .field .field-label {
+  width: 32%;
+  font-weight: 600;
+  padding-left: 6px;
+  float: none;
+  max-width: 0;
 }
 
-.printer-friendly .field-group-fieldset .panel-body>.field .field-items {
-  width: 650px; 
+.printer-friendly .field-group-fieldset .panel-body .field .field-items {
+  width: 67%;
+  float: none;
+  max-width: 0; 
+}
+
+.printer-friendly .field-group-fieldset .panel-body .field .field-items .field-item {
+
 }
 
 .printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian {
   display: block;
-  margin-bottom: 8px;
 }
 
 .printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items {
   width: 100%;
-}
-
-.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items > .field-item {
-  display: table;
-}
-
-.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items .field {
-  padding: 0;
-}
-
-.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items .field .field-item {
-  padding-left: 12px; 
+  float: left;
+  max-width: none;
 }
 
 .printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items .field .field-label {
   padding-left: 6px;
 }
 
-.printer-friendly .field-group-fieldset .panel-body>.field .field-items img {
+.printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items > .field-item,
+.printer-friendly .field-group-fieldset .panel-body>.group-custodian-details {
+  display: table;
+  width: 100%; 
+}
+
+.printer-friendly .field-group-fieldset .panel-body .field .field-items img {
   padding-top: 4px; 
+}
+
+.printer-friendly .group-investment-menu .panel-body,
+.printer-friendly .group-investment-menu .panel-body > .field-name-field-mutual-fund-names {
+  display: block;
+}
+
+.printer-friendly .group-investment-menu .panel-body > .field-name-field-mutual-fund-names > .field-items {
+  max-width: none;
+  width: 100%;
+}
+
+.printer-friendly .group-investment-menu .panel-body > .field-name-field-mutual-fund-names > .field-items .field-name-field-mutual-fund {
+  background: transparent;
+}
+
+.printer-friendly .group-investment-menu .panel-body > .field-name-field-mutual-fund-names > .field-items .field-item .node .field-name-field-mutual-fund .field-items .group-left {
+  width: 58%;
+}
+
+.printer-friendly .group-investment-menu .panel-body > .field-name-field-mutual-fund-names > .field-items .field-item .node .field-name-field-mutual-fund .field-items .group-right {
+  width: 41%;
 }

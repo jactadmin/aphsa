@@ -121,8 +121,7 @@ h2.block-title {
 }
 
 #navbar .navbar-nav > li > a {
-  padding-top: 26px;
-  padding-bottom: 26px;
+  padding: 26px 12px;
 }
 
 #navbar .navbar-nav > li > a.adviserlink:after {
@@ -138,7 +137,7 @@ h2.block-title {
 }
 
 .logo.navbar-btn img {
-  max-width: 280px;
+  max-width: 250px;
 }
 
 .region-sidebar-first .block ul {
@@ -303,7 +302,7 @@ input[type="checkbox"].facetapi-checkbox {
   font-weight: 600;
 }
 
-.node-providers fieldset .panel-body > .field-label-inline > .field-items,
+.node-providers fieldset .panel-body .field-label-inline > .field-items,
 .node-providers fieldset .panel-body > #group-custodian-details .field .field-items,
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right {
   padding-left: 12px;
