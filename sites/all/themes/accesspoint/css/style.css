@@ -12,6 +12,10 @@ body {
   color: #333;
 }
 
+.captcha {
+  margin-bottom: 15px;
+}
+
 /* ===================================================================
  *
  * Typo
@@ -269,7 +273,8 @@ input[type="checkbox"].facetapi-checkbox {
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-name-field-mutual-fund > .field-items > .field-item.even,
 .node-providers fieldset .panel-body > .field-name-field-associated-material > .field-items:first-of-type > .field-item.even,
 .node-providers fieldset .panel-body > .field-type-entityreference .node > .field > .field-item.even,
-.node-providers fieldset .panel-body > #group-custodian-details .field:nth-child(even) {
+.node-providers fieldset .panel-body > #group-custodian-details .field:nth-child(even),
+.node-providers .field-name-field-contact .node-contacts > .field:nth-child(even) {
   background: #f4f4f4; 
 }
 
@@ -340,6 +345,28 @@ input[type="checkbox"].facetapi-checkbox {
   display: block;
 }
 
+.node-providers .field-type-entityreference .field {
+  padding-left: 6px;
+}
+
+.node-providers .field-type-entityreference .field-name-field-mutual-fund,
+.node-providers .field-type-entityreference .field .group-left .field {
+  padding-left: 0;
+}
+
+.node-providers .field-name-field-contact > .field-items > .field-item:not(:first-of-type) {
+  margin-top: 20px;
+}
+
+.node-providers .field-name-field-contact .node-contacts h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.node-providers .field-name-field-contact .node-contacts .field-name-body .field-item {
+  padding: 6px;
+}
 /* ===================================================================
  *
  * Bootstrap Grid View
@@ -357,6 +384,10 @@ input[type="checkbox"].facetapi-checkbox {
 
 .view-access-point-search .views-exposed-form .views-exposed-widget .btn {
   margin-top: 0;
+}
+
+.views-bootstrap-grid-plugin-style .row {
+  margin-bottom: 30px;
 }
  
 .views-bootstrap-grid-plugin-style .col {
@@ -392,7 +423,7 @@ input[type="checkbox"].facetapi-checkbox {
 }
 
 .views-bootstrap-grid-plugin-style .img-helper-wrapper {
-  height: 100px;
+  min-height: 70px;
   display: block;
 }
 
@@ -404,6 +435,12 @@ input[type="checkbox"].facetapi-checkbox {
  
 .views-bootstrap-grid-plugin-style .views-field-title {
   line-height: 20px;
+}
+
+.views-bootstrap-grid-plugin-style .views-field-field-self-directed-brokerage {
+  font-size: 12px;
+  font-style: italic;
+  color: #555;
 }
 
 /* ===================================================================
