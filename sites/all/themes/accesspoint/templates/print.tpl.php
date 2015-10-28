@@ -75,7 +75,7 @@
     <?php print $head; ?>
     <base href='<?php print $url ?>' />
     <title><?php print $print_title; ?></title>
-    <?php print $scripts; ?>
+
     <?php if (isset($sendtoprinter)) print $sendtoprinter; ?>
     <?php print $robots_meta; ?>
     <?php if (theme_get_setting('toggle_favicon')): ?>
@@ -107,6 +107,7 @@
       </div>
     <?php endif; ?>
     <div class="print-links"><?php print theme('print_url_list'); ?></div>
+        <?php print $scripts; ?>
     <?php print $footer_scripts; ?>
   </body>
 </html>

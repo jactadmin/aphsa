@@ -65,7 +65,9 @@ img.print-logo {
   display: table-cell;
 }
 
-.printer-friendly .field-group-fieldset .panel-body .field .field-label {
+.printer-friendly .field-group-fieldset .panel-body .field .field-label,
+.printer-friendly .node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item .field > .field-label,
+.printer-friendly .node-providers fieldset .panel-body > #group-custodian-details .field .field-label {
   width: 32%;
   font-weight: 600;
   padding-left: 6px;
@@ -73,7 +75,9 @@ img.print-logo {
   max-width: 0;
 }
 
-.printer-friendly .field-group-fieldset .panel-body .field .field-items {
+.printer-friendly .field-group-fieldset .panel-body .field .field-items,
+.printer-friendly .node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item .field > .field-items,
+.printer-friendly .node-providers fieldset .panel-body > #group-custodian-details .field .field-items {
   width: 67%;
   float: none;
   max-width: 0; 
@@ -90,6 +94,11 @@ img.print-logo {
 .printer-friendly .field-group-fieldset .panel-body>.field-name-field-custodian > .field-items {
   width: 100%;
   float: left;
+  max-width: none;
+}
+
+,
+.printer-friendly .node-providers fieldset .panel-body > #group-custodian-details .field .field-items {
   max-width: none;
 }
 

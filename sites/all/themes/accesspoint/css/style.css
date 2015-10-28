@@ -152,6 +152,10 @@ input[type="checkbox"].facetapi-checkbox {
   margin-right: 6px;
 }
 
+footer.footer {
+  text-align: center;
+}
+
 /* ===================================================================
  *
  * Jumbotron
@@ -243,7 +247,8 @@ input[type="checkbox"].facetapi-checkbox {
 .node-providers fieldset .panel-body,
 .node-providers fieldset .panel-body > #group-custodian-details,
 .node-providers fieldset .panel-body > .field-type-entityreference .node,
-.node-providers fieldset .panel-body > .field-type-entityreference .node .field-name-field-mutual-fund > .field-items {
+.node-providers fieldset .panel-body > .field-type-entityreference .node .field-name-field-mutual-fund > .field-items,
+.node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item {
   display: table;
   width: 100%;
 }
@@ -261,7 +266,8 @@ input[type="checkbox"].facetapi-checkbox {
 .node-providers fieldset .panel-body > .field-type-entityreference,
 .node-providers fieldset .panel-body > .field-type-entityreference .node > .field,
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-name-field-mutual-fund > .field-items > .field-item,
-.node-providers fieldset .panel-body > #group-custodian-details .field {
+.node-providers fieldset .panel-body > #group-custodian-details .field,
+.node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field {
   display: table-row;
 }
 
@@ -274,7 +280,8 @@ input[type="checkbox"].facetapi-checkbox {
 .node-providers fieldset .panel-body > .field-name-field-associated-material > .field-items:first-of-type > .field-item.even,
 .node-providers fieldset .panel-body > .field-type-entityreference .node > .field > .field-item.even,
 .node-providers fieldset .panel-body > #group-custodian-details .field:nth-child(even),
-.node-providers .field-name-field-contact .node-contacts > .field:nth-child(even) {
+.node-providers .field-name-field-contact .node-contacts > .field:nth-child(even),
+.node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field:nth-child(even) {
   background: #f4f4f4; 
 }
 
@@ -283,7 +290,9 @@ input[type="checkbox"].facetapi-checkbox {
 .node-providers fieldset .panel-body > #group-custodian-details .field .field-label,
 .node-providers fieldset .panel-body > #group-custodian-details .field .field-items,
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left,
-.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right  {
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right,
+.node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-label,
+.node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-items {
   display: table-cell;
   max-width: 0;
   float: none;
@@ -301,7 +310,8 @@ input[type="checkbox"].facetapi-checkbox {
 .node-providers fieldset .panel-body > .field-label-inline > .field-label,
 .node-providers fieldset .panel-body > .field-type-entityreference .node .field-label,
 .node-providers fieldset .panel-body > #group-custodian-details .field .field-label,
-.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left {
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left,
+.node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-label {
   width: 45%;
   padding-left: 6px;
   font-weight: 600;
@@ -309,7 +319,8 @@ input[type="checkbox"].facetapi-checkbox {
 
 .node-providers fieldset .panel-body .field-label-inline > .field-items,
 .node-providers fieldset .panel-body > #group-custodian-details .field .field-items,
-.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right {
+.node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right,
+.node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-items {
   padding-left: 12px;
   white-space: nowrap;
   overflow: hidden;
@@ -358,9 +369,14 @@ input[type="checkbox"].facetapi-checkbox {
   margin-top: 20px;
 }
 
+.node-providers .field-name-field-contact .field-items > .field-item {
+  margin-bottom: 10px;
+}
+
 .node-providers .field-name-field-contact .node-contacts h2 {
   margin: 0 0 10px;
-  font-size: 18px;
+  padding-left: 6px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -573,5 +589,29 @@ input[type="checkbox"].facetapi-checkbox {
   
   .front #custom-jumbotron h1 sup {
     font-size: 12px;
+  }
+  
+  .node-providers fieldset .panel-body {
+    font-size: .8em;
+  }
+  
+  .node-providers fieldset .panel-body {
+    padding: 6px;
+  }
+  
+  .node-providers fieldset .panel-body > .field-label-inline > .field-label,
+  .node-providers fieldset .panel-body > .field-type-entityreference .node .field-label,
+  .node-providers fieldset .panel-body > #group-custodian-details .field .field-label,
+  .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left,
+  .node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-label {
+    width: 65%;
+  }
+  
+  .node-providers fieldset .panel-body .field-label-inline > .field-items,
+  .node-providers fieldset .panel-body > #group-custodian-details .field .field-items,
+  .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right,
+  .node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-items {
+    padding-left: 8px;
+    width: 35%;
   }
 }
