@@ -95,9 +95,7 @@
     <div class="print-site_name"><?php print theme('print_published'); ?></div>
     <p />
     <hr class="print-hr" />
-    <?php if (!isset($node->type)): ?>
-      <h2 class="print-title"><?php print $print_title; ?></h2>
-    <?php endif; ?>
+
     <div class="print-content"><?php print $content; ?></div>
     <div class="print-footer"><?php print theme('print_footer'); ?></div>
     <hr class="print-hr" />

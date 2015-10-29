@@ -1,0 +1,26 @@
+<?php
+
+function ap_custom_menu_alter(&$items){
+    
+    
+}
+
+function ap_custom_menu() {
+  $items['user/%user/agreement'] = array(
+    'title' => 'User Agreement', 
+    'page callback' => 'drupal_goto', 
+    'page arguments' => array('agreement'), 
+    'access callback' => 'user_is_logged_in', 
+    'type' => MENU_LOCAL_TASK,
+    
+  );
+
+  return $items;
+}
+
+function accesspoint_form_alter(&$form, &$form_state, $form_id) {
+    if ($form_id == 'user_profile_form') {
+        unset($form['contact']);
+    }
+    
+}

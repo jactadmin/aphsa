@@ -32,6 +32,12 @@ img.print-logo {
   padding: 6px 0;
 }
 
+.field-name-field-description,
+.field-name-body,
+.field-name-field-security-features {
+  margin: 20px 0;
+}
+
 /*
 .printer-friendly .node-providers > .row:first-child > .col-sm-12 > .field {
   margin-bottom: 0;

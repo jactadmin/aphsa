@@ -1,0 +1,4 @@
+name = Access Point Custom
+description = Custom code changes created for Access Point HSA  
+package = "Custom"
+core = 7.x
