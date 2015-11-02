@@ -258,7 +258,7 @@ footer.footer {
 
 
 .node-providers > .row:first-child > .col-sm-12 > .field-name-field-description,
-.node-providers .field-name-body
+.node-providers .field-name-body,
 .node-providers .field-name-field-security-features {
   margin-bottom: 15px;
 }
@@ -315,11 +315,12 @@ footer.footer {
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left,
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right,
 .node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-label,
-.node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-items {
+.node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-items,
+.node-providers fieldset .panel-body > .field-name-field-contact > .field-items > .field-item > .node > .field > .field-label,
+.node-providers fieldset .panel-body > .field-name-field-contact > .field-items > .field-item > .node > .field > .field-items  {
   display: table-cell;
   max-width: 0;
   float: none;
-
 }
 
 .node-providers fieldset .panel-body > .field-type-entityreference .field-items {
@@ -373,6 +374,7 @@ footer.footer {
 .node-providers fieldset.group-custodian .panel-body,
 .node-providers fieldset.group-mutual-funds .panel-body,
 .node-providers fieldset.group-links-forms .panel-body,
+.node-providers fieldset.group-direct-contacts .panel-body,
 .node-providers fieldset .panel-body > .field-type-entityreference,
 .node-providers fieldset .panel-body > .field.field-type-entityreference > .field-items,
 .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node > .field-name-field-mutual-fund {
@@ -405,6 +407,10 @@ footer.footer {
 
 .node-providers .field-name-field-contact .node-contacts .field-name-body .field-item {
   padding: 6px;
+}
+
+.node-providers fieldset .panel-body > .field-name-field-contact > .field-items > .field-item > .node > header {
+  display: table-caption;
 }
 
 /* ===================================================================
@@ -665,6 +671,10 @@ li.print_html.first {
     font-size: 12px;
   }
   
+  .node-providers .col-sm-6 {
+    margin-bottom: 20px;
+  }
+  
   .node-providers fieldset .panel-body {
     font-size: .8em;
   }
@@ -678,7 +688,7 @@ li.print_html.first {
   .node-providers fieldset .panel-body > #group-custodian-details .field .field-label,
   .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-left,
   .node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-label {
-    width: 65%;
+    width: 55%;
   }
   
   .node-providers fieldset .panel-body .field-label-inline > .field-items,
@@ -686,6 +696,6 @@ li.print_html.first {
   .node-providers fieldset .panel-body > .field-name-field-mutual-fund-names .field-item .node .field-items .field-item .group-right,
   .node-providers fieldset .panel-body > .field-name-field-custodian > .field-items > .field-item > .field > .field-items {
     padding-left: 8px;
-    width: 35%;
+    width: 45%;
   }
 }
