@@ -82,8 +82,8 @@
       <link rel='shortcut icon' href='<?php print theme_get_setting('favicon') ?>' type='image/x-icon' />
     <?php endif; ?>
     <?php print $css; ?>
-    <link rel="stylesheet" href="http://access.onpoint-data.com:3080/sites/all/themes/accesspoint/css/style.css" />
-    <link rel="stylesheet" href="http://access.onpoint-data.com:3080/sites/all/themes/accesspoint/css/printer-friendly.css" />
+    <link rel="stylesheet" href="/sites/all/themes/accesspoint/css/style.css" />
+    <link rel="stylesheet" href="/sites/all/themes/accesspoint/css/printer-friendly.css" />
   </head>
   <body class="printer-friendly">
     <?php if (!empty($message)): ?>
