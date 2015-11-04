@@ -544,7 +544,8 @@ li.print_html.first {
   margin-left: 0;
 }
 
-.flag-outer-agreement {
+.flag-outer-agreement,
+.field-name-ds-flag-agreement {
   margin: 20px 0;
   text-align: center;
 }
