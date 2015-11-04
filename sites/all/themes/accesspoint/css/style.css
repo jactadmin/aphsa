@@ -524,6 +524,15 @@ footer.footer {
 }
 
 /* ----------------------------------------------------
+	ALERT
+------------------------------------------------------- */
+
+.alert-warning a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ----------------------------------------------------
 	MISC
 ------------------------------------------------------- */
 
@@ -534,6 +543,23 @@ img.print-icon {
 li.print_html.first {
   margin-left: 0;
 }
+
+.flag-outer-agreement {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.flag-agreement span.flagged {
+  
+}
+
+.btn[disabled]:hover {
+  margin-top: 0;
+  border-bottom-width: 4px;
+}
+
+
+
 
 /* ===================================================================
  *
