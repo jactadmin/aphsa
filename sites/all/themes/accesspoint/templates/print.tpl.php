@@ -97,6 +97,12 @@
     <hr class="print-hr" />
 
     <div class="print-content"><?php print $content; ?></div>
+    <div>    
+    <?php
+       $block = block_load('block', '7');     
+       print render(_block_get_renderable_array(_block_render_blocks(array($block))));       
+    ?>
+    </div>
     <div class="print-footer"><?php print theme('print_footer'); ?></div>
     <hr class="print-hr" />
     <?php if ($sourceurl_enabled): ?>
