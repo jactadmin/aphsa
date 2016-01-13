@@ -19,8 +19,24 @@ function ap_custom_menu() {
 }
 
 function accesspoint_form_alter(&$form, &$form_state, $form_id) {
-    if ($form_id == 'user_profile_form') {
-        unset($form['contact']);
-    }
-    
+  if ($form_id == 'user_profile_form') {
+    unset($form['contact']);
+  }
+}
+
+/**
+* Implementation of hook_form_alter()
+*/
+function ap_custom_form_alter(&$form, &$form_state, $form_id) {
+
+  switch ($form_id) {
+    case 'webform_client_form_10907':
+      $nid = $_GET['id'];
+      $node = node_load($nid);
+      // Add the node title to the webform field8
+      $form['submitted']['hsa_carrier_to_be_quoted']['#default_value'] = $node->title;
+      //}
+      return $form;
+    break;
+  }
 }
