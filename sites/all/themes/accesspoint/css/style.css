@@ -47,6 +47,11 @@ div[class*="col-"] > .h6:first-child {
   margin-top: 0;
 }
 
+a:hover {
+  color: #056c94;
+  
+}
+
 ul {
   padding-left: 1em;
 }
@@ -155,7 +160,7 @@ h2.block-title {
 }
 
 .logo.navbar-btn img {
-  max-width: 250px;
+  max-width: 225px;
 }
 
 .region-sidebar-first .block ul {
@@ -473,44 +478,60 @@ footer.footer {
 }
 
 .view-access-point-search .views-bootstrap-grid-plugin-style .row {
-  margin-bottom: 30px;
+  margin: 0 -10px 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
  
 .view-access-point-search .views-bootstrap-grid-plugin-style .col {
-  text-align: center;
-  padding-top: 15px;
-  padding-bottom: 30px;
-  border: 1px solid #fff;
-  border-radius: 4px;
-  -webkit-transition: background .3s;
-  -moz-transition: background .3s;
-  -ms-transition: background .3s;
-  -o-transition: background .3s;
-  transition: background .3s;
-}
-
-.view-access-point-search .views-bootstrap-grid-plugin-style .col:hover {
-  background: #f8f8f8;
-  border: 1px solid #e2e2e2;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .view-access-point-search .views-bootstrap-grid-plugin-style .col .grid-link {
   display: block;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 40px;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 .view-access-point-search .views-bootstrap-grid-plugin-style .grid-link:hover {
-  text-decoration: none; 
+  text-decoration: none;
+  border: 1px solid #ccc;
+  background: #fafafa;
 }
 
 .view-access-point-search .views-bootstrap-grid-plugin-style .col .img-responsive {
   margin: 0 auto;
   vertical-align: middle;
   display: inline;
+  max-height: 100%;
+  width: auto;
 }
 
 .view-access-point-search .views-bootstrap-grid-plugin-style .img-helper-wrapper {
-  min-height: 70px;
   display: block;
+  height: 50px;
 }
 
 .view-access-point-search .views-bootstrap-grid-plugin-style .img-helper-wrapper .img-helper {
@@ -521,12 +542,227 @@ footer.footer {
  
 .view-access-point-search .views-bootstrap-grid-plugin-style .views-field-title {
   line-height: 20px;
+  padding: 8px;
 }
 
 .view-access-point-search .views-bootstrap-grid-plugin-style .views-field-field-self-directed-brokerage {
   font-size: 12px;
   font-style: italic;
   color: #555;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  margin: 0 15px;
+  text-align: center;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .compare-toggle {
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  -moz-transition: opacity .3s;
+  -ms-transition: opacity .3s;
+  -o-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .col:hover .compare-toggle-wrapper .compare-toggle {
+  opacity: 1;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .compare-toggle:hover {
+
+  text-decoration: none;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .compare-toggle .ajax-progress {
+  position: absolute;
+  right: 14px;
+}
+
+/** Style Comparison links **/
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .compare-toggle.remove,
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .compare-toggle.add {
+  display: block;
+  padding: 4px 6px 2px;
+  border-width: 0 1px 4px 1px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-style: solid;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .compare-toggle.add {
+  background-color: #75caeb;
+  border-color: #5fc1e8;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .compare-toggle.remove {
+  opacity: 1;
+  background-color: #ff4136;
+  border-color: #ff291c;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .remove:active,
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .add:hover
+ {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-image: none;
+  color: #ffffff;
+  background-color: #48b9e5;
+  border-color: #29ade0;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .add:hover  {
+  background-color: #75caeb;
+  border-color: #5fc1e8;
+  margin-top: 1px;
+  border-bottom-width: 3px;
+}
+
+.view-access-point-search .views-bootstrap-grid-plugin-style .compare-toggle-wrapper .remove:hover {
+  background-color: #ff4136;
+  border-color: #ff291c;
+  margin-top: 1px;
+  border-bottom-width: 3px;
+}
+
+/* ----------------------------------------------------
+	Comparison block
+------------------------------------------------------- */
+
+#node-compare-block-content {
+  border-radius: 4px;
+  background: #e6f7fd;
+  border: 1px solid #cee7ff;
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+#node-compare-block-content h2 {
+  font-weight: 600;
+}
+
+#node-compare-block-content table {
+  margin-bottom: 0;
+}
+
+#node-compare-items tr,
+#node-compare-items tr:hover {
+  background: transparent;
+}
+
+#node-compare-block-content td {
+  padding: 4px 6px; 
+}
+
+#node-compare-items tr:last-child td {
+  padding: 14px 6px;
+}
+
+#node-compare-items tr td:first-child a.compare-block-links {
+  
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-style: solid;
+  border-width: 0 1px 4px 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #28b62c;
+  border-color: #23a127;
+}
+
+#node-compare-items tr td:first-child a.compare-block-links:hover {
+  background-color: #28b62c;
+  border-color: #23a127;
+  margin-top: 1px;
+  border-bottom-width: 3px;
+}
+
+#node-compare-items tr td:first-child a.compare-block-links:active {
+  background-color: #186f1b;
+  border-color: #0c390e;
+  margin-top: 2px;
+  border-bottom-width: 2px;
+}
+
+/* ----------------------------------------------------
+	Comparison page
+------------------------------------------------------- */
+
+#comparison-table {
+/*   table-layout: fixed; */
+  width: 100%!important;
+}
+
+#comparison-table th.properties-title {
+
+}
+
+#comparison-table th.item-title {
+  vertical-align: top;
+  padding: 30px 8px 8px;
+}
+
+#comparison-table th.item-title .remove-col {
+  font-size: .85em;
+  font-weight: normal;
+  color: #aaa;
+}
+
+#comparison-table .compare-field-label {
+  font-weight: 600;
+}
+
+#comparison-table .node-custodians {
+  
+}
+
+#comparison-table .node-custodians h2 {
+  font-size: 16px;
+  margin: 0 0 4px 0;
+}
+
+#comparison-table .node-custodians .field-name-field-custodian-credit-rating {
+  font-size: .85em;
 }
 
 /* ----------------------------------------------------
@@ -636,8 +872,8 @@ li.print_html.first {
     padding-top: 28px;
     padding-bottom: 28px;
     font-size: 13px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 6px;
+    padding-right: 6px;
   }
 
   #custom-jumbotron h1 {
@@ -701,6 +937,10 @@ li.print_html.first {
   
   div[class*="col-md-"] {
     margin: 15px 0;
+  }
+  
+  .view-access-point-search .views-bootstrap-grid-plugin-style .row {
+    display: block; 
   }
   
   .node-providers .group-rfp-link,
