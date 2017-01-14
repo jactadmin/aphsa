@@ -288,7 +288,7 @@ function custom_search_form_alter(&$form, &$form_state, $form_id) {
             $toptions['c-all'] = variable_get('custom_search_' . $delta . 'type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT);
           }
           foreach ($types as $type) {
-            $toptions['c-' . $type] = $names[$type];
+            $toptions['c-' . $type] = t($names[$type]);
           }
         }
         $options = array();
@@ -591,10 +591,6 @@ function custom_search_submit($form, &$form_state) {
   // Build a custom path if needed.
   if (isset($form_state['values']['custom_search_paths']) && $form_state['values']['custom_search_paths'] != '') {
     $key = $form_state['values'][$form_state['values']['form_id']];
-    // encode the key as it could be in the path
-    $key = drupal_encode_path($key);
-    // Encode dots since this can cause issue when it's the first character in a path
-    $key = str_replace('.', '%2E', $key);
     $custom_path = str_replace('[key]', $key, $form_state['values']['custom_search_paths']);
     $custom_path = str_replace('[current_path]', current_path(), $custom_path);
     if (strpos($form_state['values']['custom_search_paths'], '[terms]') !== FALSE) {

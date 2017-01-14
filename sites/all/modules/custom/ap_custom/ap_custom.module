@@ -38,5 +38,16 @@ function ap_custom_form_alter(&$form, &$form_state, $form_id) {
       //}
       return $form;
     break;
+  
+     case 'user_login':
+	//dpm($form);
+      return $form;
+     break;
+
+      case 'user_register_form':
+       // dpm($form);
+      return $form;
+     break;
+
   }
 }

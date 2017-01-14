@@ -810,6 +810,26 @@ footer.footer {
 }
 
 /* ----------------------------------------------------
+ * 	User Page
+ * ------------------------------------------------------- */
+
+.profile2-main .content .field {
+  margin-bottom: 12px;
+}
+
+.profile2-main .content .field .field-label,
+.profile dt {
+  font-weight: normal;
+  color: #999;
+  font-size: .85em;
+  line-height: 21px;
+}
+
+.profile2-main .content .field .field-items {
+  line-height: 21px;  
+}
+
+/* ----------------------------------------------------
 	RFP Form
 ------------------------------------------------------- */
 
