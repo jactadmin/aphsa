@@ -107,6 +107,10 @@ h2.block-title {
   background: #ddd;
 }
 
+#user-nav-wrapper .navbar-nav > li {
+  float:left;
+}
+
 #user-nav-wrapper .navbar-nav > li > a {
   padding: 2px 8px;
   text-transform: uppercase;
@@ -116,18 +120,21 @@ h2.block-title {
   color: #666;
 }
 
-#user-nav-wrapper .navbar-nav > li > a.login {
-  background-color: #aaa; 
-  color: #fff;
-}
-
 #user-nav-wrapper .navbar-nav > li > a:hover {
   color: #333;
 }
 
-#user-nav-wrapper .navbar-nav > li > a.login:hover {
-  background-color: #888;
-  color: #fff;
+#user-nav-wrapper .navbar-nav > li.login {
+  margin-right: 10px;
+}
+
+#user-nav-wrapper .navbar-nav > li.login a {
+  padding-left: 93px;
+  background: url(../images/hsa-vista-login.png) left center no-repeat;
+}
+
+#user-nav-wrapper .navbar-nav > li.login a:hover {
+  background: url(../images/hsa-vista-login.png) left center no-repeat #fff;
 }
 
 #navbar {
@@ -1013,6 +1020,19 @@ li.print_html.first {
     padding-top: 8px;
     padding-bottom: 8px;
   }
+
+  #user-nav-wrapper .navbar-nav > li.login {
+    margin-right:0;
+  }
+
+  #user-nav-wrapper .navbar-nav > li.login a {
+    padding-left: 8px;
+    background: transparent;
+  }
+
+  #user-nav-wrapper .navbar-nav > li.login a:hover {
+    background:  #fff;
+  }  
   
   #custom-jumbotron {
     background-color: #003F80;
