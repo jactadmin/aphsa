@@ -5,6 +5,7 @@ function ap_custom_menu_alter(&$items){
     
 }
 
+/*
 function ap_custom_menu() {
   $items['user/%user/user-agreement'] = array(
     'title' => 'User Agreement', 
@@ -17,6 +18,7 @@ function ap_custom_menu() {
 
   return $items;
 }
+*/
 
 function accesspoint_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'user_profile_form') {
