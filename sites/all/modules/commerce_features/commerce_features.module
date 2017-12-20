@@ -83,6 +83,14 @@ function commerce_features_features_api() {
       'file' => drupal_get_path('module', 'commerce_features') . '/commerce_payment_method.features.inc',
     );
   }
+  if (module_exists('commerce_fees')) {
+    $features['commerce_fees_type'] = array(
+      'name' => t('Commerce fees types'),
+      'feature_source' => TRUE,
+      'default_hook' => 'commerce_fees_default_types',
+      'file' => drupal_get_path('module', 'commerce_features') . '/commerce_fees.features.inc',
+    );
+  }
 
   return $features;
 }
