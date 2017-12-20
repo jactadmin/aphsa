@@ -1,0 +1,4 @@
+name = Access Point Search Report
+description = HSA Advisor Link Search reporting for Access Point HSA  
+package = "Custom"
+core = 7.x

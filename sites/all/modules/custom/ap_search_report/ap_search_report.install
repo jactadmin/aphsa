@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Search API saved searches
+ * module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+//function ap_search_report_schema() {
+  
+  //$schema['search_reports'] = array(
+//    'description' => 'Each search saved for report printing.',
+//    'fields' => array(
+//      'id' => array(
+//        'description' => 'The primary identifier for each search.',
+//        'type' => 'serial',
+//        'unsigned' => TRUE,
+//        'not null' => TRUE,
+//      ),
+//      'uid' => array(
+//        'description' => 'The {users}.uid that created this saved search.',
+//        'type' => 'int',
+//        'not null' => TRUE,
+//        'default' => 0,
+//      ),
+//      'report_id' => array(
+//        'description' => 'The report id to be printed.',
+//        'type' => 'int',
+//        'not null' => TRUE,
+//      ),
+//      'created' => array(
+//        'description' => 'The Unix timestamp when the saved search was created.',
+//        'type' => 'int',
+//        'not null' => TRUE,
+//      ),
+//      
+//      'options' => array(
+//        'description' => 'Additional options for this saved search.',
+//        'type' => 'blob',
+//        'serialize' => TRUE,
+//        'not null' => TRUE,
+//      ),
+//      'results' => array(
+//        'description' => 'A comma-separated list of all "old" results for this saved search.',
+//        'type' => 'text',
+//        'not null' => FALSE,
+//      ),
+//    ),
+//    'indexes' => array(
+//      'user' => array('uid'),
+//     // 'notify' => array('enabled', 'notify_interval', 'last_queued', 'last_execute'),
+//    ),
+//    'primary key' => array('id'),
+//  );
+
+//  return $schema;
+//}

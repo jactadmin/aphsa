@@ -1,0 +1,52 @@
+<?php
+
+//function ap_search_report_search_api_solr_search_results_alter(array &$results, SearchApiQueryInterface $query, $response) {
+//  if (isset($response->facet_counts->facet_fields->custom_field)) {
+////   dpm($query);
+//  }
+//}
+
+function ap_search_report_form($form, &$form_state){
+    $form = array();
+    
+    
+    $form['submit'] = array(
+        '#type' => 'submit' ,
+        '#value' => t('Print Search') , 
+    );  
+    
+    return $form ; 
+
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function ap_search_report_block_info() {
+  $blocks = array();
+  $blocks['hsa_search_report'] = array(
+    'info' => t('HSA Advisor Link Print'),
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function ap_search_report_block_view($delta='') {
+  $block = array();
+  
+  switch($delta) {
+    case 'hsa_search_report' :
+      $block['content'] = drupal_render(drupal_get_form('ap_search_report'));
+      break;
+  }
+  
+  return $block;
+}
+
+function ap_search_report_form_submit($form, &$form_state) {
+  // You need the have Devel module enabled for dpm() to work.
+ // dpm($form_state);
+}
