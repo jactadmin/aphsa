@@ -15,6 +15,7 @@
 
 User-agent: *
 Crawl-delay: 10
+Disallow: /
 # CSS, JS, Images
 Allow: /misc/*.css$
 Allow: /misc/*.css?

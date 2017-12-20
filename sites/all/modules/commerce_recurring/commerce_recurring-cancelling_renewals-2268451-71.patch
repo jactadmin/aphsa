@@ -1,0 +1,264 @@
+diff --git a/commerce_recurring.module b/commerce_recurring.module
+index 464dcae..0ffbd94 100644
+--- a/commerce_recurring.module
++++ b/commerce_recurring.module
+@@ -592,6 +592,7 @@ function commerce_recurring_cron() {
+  */
+ function commerce_recurring_permission() {
+   $permissions = array();
++
+   $permissions += commerce_entity_access_permissions('commerce_recurring');
+ 
+   return $permissions;
+@@ -616,6 +617,8 @@ function commerce_recurring_access($op, $type = NULL, $account = NULL) {
+ /**
+  * Entity uri callback: gives modules a chance to specify a path for a recurring
+  * entity.
++ * @param $recurring_entity
++ * @return null or $uri
+  */
+ function commerce_recurring_uri($recurring_entity) {
+   // Allow modules to specify a path, returning the first one found.
+@@ -627,12 +630,13 @@ function commerce_recurring_uri($recurring_entity) {
+       return $uri;
+     }
+   }
+-
+   return NULL;
+ }
+ 
+ /**
+  * Implements hook_commerce_checkout_router().
++ * @param $order
++ * @param $checkout_page
+  */
+ function commerce_recurring_commerce_checkout_router($order, $checkout_page) {
+   // Just in the last page of the checkout if the order is not anonymous,
+@@ -648,3 +652,4 @@ function commerce_recurring_commerce_checkout_router($order, $checkout_page) {
+     }
+   }
+ }
++
+diff --git a/commerce_recurring_ui/commerce_recurring_ui.info b/commerce_recurring_ui/commerce_recurring_ui.info
+index af36dd6..1eeda86 100644
+--- a/commerce_recurring_ui/commerce_recurring_ui.info
++++ b/commerce_recurring_ui/commerce_recurring_ui.info
+@@ -8,3 +8,5 @@ dependencies[] = views
+ configure = admin/commerce/recurring-entities
+ 
+ files[] = includes/views/handlers/commerce_recurring_handler_field_order_operations.inc
++files[] = includes/views/handlers/commerce_recurring_ui_handler_field_operations_dropbutton.inc
++
+diff --git a/commerce_recurring_ui/commerce_recurring_ui.module b/commerce_recurring_ui/commerce_recurring_ui.module
+index 0c181cd..9f0bf01 100644
+--- a/commerce_recurring_ui/commerce_recurring_ui.module
++++ b/commerce_recurring_ui/commerce_recurring_ui.module
+@@ -28,10 +28,31 @@ function commerce_recurring_ui_menu() {
+     'context' => MENU_CONTEXT_INLINE,
+     'file' => 'commerce_recurring_ui.admin.inc',
+   );
++  $items['user/%user/recurring/%commerce_recurring/cancel/%'] = array(
++    'page callback'    => 'drupal_get_form',
++    'page arguments'   => array('commerce_recurring_ui_cancel_renewals_form', 1, 3, 5),
++    'access callback'  => 'commerce_recurring_ui_cancel_access',
++    'access arguments' => array('cancel own subscription renewals', 3),
++    'description'      => 'Cancel subscription renewals',
++    'type'             => MENU_CALLBACK,
++  );
+   return $items;
+ }
+ 
+ /**
++ * Implements hook_permission().
++ */
++function commerce_recurring_ui_permission() {
++  $permissions = array();
++
++  $permissions['cancel own subscription renewals'] = array(
++    'title' => t('Cancel Own Subscription Renewals'),
++  );
++
++  return $permissions;
++}
++
++/**
+  * Implements hook_entity_info_alter().
+  */
+ function commerce_recurring_ui_entity_info_alter(&$entity_info) {
+@@ -59,3 +80,62 @@ function commerce_recurring_ui_views_api() {
+     'path' => drupal_get_path('module', 'commerce_recurring_ui') . '/includes/views',
+   );
+ }
++
++/**
++ * Cancel a single recurring subscription form
++ * @param $form
++ * @param $form_state
++ * @param $id
++ * @return mixed
++ */
++function commerce_recurring_ui_cancel_renewals_form($form, &$form_state, $user, $recurring_entity, $token = '') {
++  if(drupal_valid_token($token, $recurring_entity->id)) {
++    $my_subscriptions_path = 'user/' . $user->uid . '/user-recurring-entities';
++
++    if (!$recurring_entity->status) {
++      drupal_set_message(t("Subscription @id has already been cancelled. You will not be charged again for this subscription.", array("@id" => $recurring_entity->id)));
++      drupal_goto($my_subscriptions_path);
++    }
++
++    // If we get to here, we're allowed to cancel the subscription.
++    $form['id'] = array(
++      '#value' => $recurring_entity->id,
++    );
++
++    $confirm_question = t('Are you sure you want to cancel your subscription renewal?');
++    $confirm_button = t('Cancel subscription renewal');
++
++    return confirm_form($form, $confirm_question, $my_subscriptions_path, t('This action cannot be undone.'), $confirm_button, t('Return to My Subscriptions'));
++  }
++}
++
++/**
++ * Does the user have access to cancel the recurring entity
++ * @param $permission
++ * @param $recurring_entity
++ * @return bool
++ */
++function commerce_recurring_ui_cancel_access($permission, $recurring_entity) {
++  global $user;
++
++  return user_access('edit any commerce_recurring entity', $user) ||
++  user_access($permission, $user) && $recurring_entity->uid == $user->uid;
++}
++
++/**
++ * Cancel subscription submit handler
++ * @param $form
++ * @param $form_state
++ */
++function commerce_recurring_ui_cancel_renewals_form_submit($form, &$form_state) {
++  $recurring_entity_id = $form['id']['#value'];
++  $recurring_entity = commerce_recurring_load($recurring_entity_id);
++
++  if ($form_state['values']['confirm']) {
++    commerce_recurring_stop_recurring($recurring_entity);
++
++    drupal_set_message(t('The subscription @id was cancelled, you will not be charged again for this subscription.', array('@id' => $recurring_entity_id)));
++  }
++
++  $form_state['redirect'] = 'user/' . $recurring_entity->uid . '/user-recurring-entities';
++}
+diff --git a/commerce_recurring_ui/includes/views/commerce_recurring_ui.views.inc b/commerce_recurring_ui/includes/views/commerce_recurring_ui.views.inc
+index 08741c0..b7556f6 100644
+--- a/commerce_recurring_ui/includes/views/commerce_recurring_ui.views.inc
++++ b/commerce_recurring_ui/includes/views/commerce_recurring_ui.views.inc
+@@ -9,6 +9,7 @@
+  */
+ function commerce_recurring_ui_views_data() {
+   $data = array();
++
+   $data['commerce_recurring']['operations'] = array(
+     'field' => array(
+       'title' => t('Operations links'),
+@@ -17,5 +18,16 @@ function commerce_recurring_ui_views_data() {
+     ),
+   );
+ 
++  // Show the operations using CTools dropbutton menu.
++  $data['commerce_recurring']['operations_dropbutton'] = array(
++    'title' => t('Operations'),
++    'help' => t('Show the commerce recurring operation links using dropbutton menu.'),
++    'field' => array(
++      'handler' => 'commerce_recurring_ui_handler_field_operations_dropbutton',
++    ),
++    // This is a dummy field, so attach it to the ID column.
++    'real field' => 'id',
++  );
++
+   return $data;
+ }
+diff --git a/commerce_recurring_ui/includes/views/commerce_recurring_ui.views_default.inc b/commerce_recurring_ui/includes/views/commerce_recurring_ui.views_default.inc
+index 2190e4f..97f498a 100644
+--- a/commerce_recurring_ui/includes/views/commerce_recurring_ui.views_default.inc
++++ b/commerce_recurring_ui/includes/views/commerce_recurring_ui.views_default.inc
+@@ -184,7 +184,7 @@ function commerce_recurring_ui_views_default_views() {
+ 
+   /* Display: Master */
+   $handler = $view->new_display('default', 'Master', 'default');
+-  $handler->display->display_options['title'] = 'User recurring entities';
++  $handler->display->display_options['title'] = 'Recurring Subscriptions';
+   $handler->display->display_options['use_more_always'] = FALSE;
+   $handler->display->display_options['access']['type'] = 'perm';
+   $handler->display->display_options['access']['perm'] = 'view own commerce_recurring entities';
+@@ -237,15 +237,10 @@ function commerce_recurring_ui_views_default_views() {
+   $handler->display->display_options['fields']['status']['field'] = 'status';
+   $handler->display->display_options['fields']['status']['type'] = 'unicode-yes-no';
+   $handler->display->display_options['fields']['status']['not'] = 0;
+-  /* Field: Global: Custom text */
+-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+-  $handler->display->display_options['fields']['nothing']['label'] = '';
+-  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'View orders';
+-  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'user/[uid]/recurring/[id]/orders';
+-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
++  /* Field: Commerce Recurring: Operations */
++  $handler->display->display_options['fields']['operations_dropbutton']['id'] = 'operations_dropbutton';
++  $handler->display->display_options['fields']['operations_dropbutton']['table'] = 'commerce_recurring';
++  $handler->display->display_options['fields']['operations_dropbutton']['field'] = 'operations_dropbutton';
+   /* Contextual filter: Commerce recurring entity: Creator ID */
+   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+   $handler->display->display_options['arguments']['uid']['table'] = 'commerce_recurring';
+diff --git a/commerce_recurring_ui/includes/views/handlers/commerce_recurring_ui_handler_field_operations_dropbutton.inc b/commerce_recurring_ui/includes/views/handlers/commerce_recurring_ui_handler_field_operations_dropbutton.inc
+new file mode 100644
+index 0000000..9c23438
+--- /dev/null
++++ b/commerce_recurring_ui/includes/views/handlers/commerce_recurring_ui_handler_field_operations_dropbutton.inc
+@@ -0,0 +1,46 @@
++<?php
++
++/**
++ * @file
++ * Provides a field handler for the Views module.
++ */
++
++/**
++ * Field handler to show commerce recurring operations in a dropbutton.
++ */
++class commerce_recurring_ui_handler_field_operations_dropbutton extends views_handler_field {
++
++  /**
++   * {@inheritdoc}
++   */
++  public function construct() {
++    parent::construct();
++    $this->additional_fields['id'] = 'id';
++
++    // Set real_field in order to make it generate a field_alias.
++    $this->real_field = 'id';
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function render($values) {
++    $recurring_id = $this->get_value($values, 'id');
++    $recurring_uid = $values->commerce_recurring_uid;
++
++    // Prepare the links.
++    $links = array();
++
++    $links[] = array(
++      'href'  => 'user/' . $recurring_uid . '/recurring/' . $recurring_id .'/orders',
++      'title' => t('view orders'),
++    );
++
++    $links[] = array(
++      'href'  => 'user/' . $recurring_uid . '/recurring/' . $recurring_id . '/cancel/' . drupal_get_token($recurring_id),
++      'title' => t('cancel'),
++    );
++
++    return theme('links__ctools_dropbutton', array('links' => $links));
++  }
++}

@@ -1,0 +1,27 @@
+--- commerce_recurring_ui/includes/views/commerce_recurring_ui.views.inc
++++ commerce_recurring_ui/includes/views/commerce_recurring_ui.views.inc
+@@ -9,6 +9,7 @@
+  */
+ function commerce_recurring_ui_views_data() {
+   $data = array();
++
+   $data['commerce_recurring']['operations'] = array(
+     'field' => array(
+       'title' => t('Operations links'),
+@@ -17,5 +18,16 @@
+     ),
+   );
+ 
++  // Show the operations using CTools dropbutton menu.
++  $data['commerce_recurring']['operations_dropbutton'] = array(
++    'title' => t('Operations'),
++    'help' => t('Show the commerce recurring operation links using dropbutton menu.'),
++    'field' => array(
++      'handler' => 'commerce_recurring_ui_handler_field_operations_dropbutton',
++    ),
++    // This is a dummy field, so attach it to the ID column.
++    'real field' => 'id',
++  );
++
+   return $data;
+ }

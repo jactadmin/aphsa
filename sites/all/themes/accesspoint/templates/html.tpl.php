@@ -63,7 +63,8 @@
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://www.accesspointhsa.com/apple-touch-icon-152x152.png" />
   <link rel="icon" type="image/png" href="http://www.accesspointhsa.com/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="http://www.accesspointhsa.com/favicon-16x16.png" sizes="16x16" />
-  <meta name="application-name" content="AccessPointHSA - Leaders in Health and Wealth Planning"/>
+<script src="https://use.fontawesome.com/a90ee02708.js"></script> 
+ <meta name="application-name" content="AccessPointHSA - Leaders in Health and Wealth Planning"/>
   <meta name="msapplication-TileColor" content="#FFFFFF" />
   <meta name="msapplication-TileImage" content="http://www.accesspointhsa.com/mstile-144x144.png" />
   <?php print $head; ?>
