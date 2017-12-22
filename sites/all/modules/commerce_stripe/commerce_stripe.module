@@ -117,21 +117,24 @@ function commerce_stripe_libraries_postload_callback($library, $version = NULL, 
     // Because the default is the version configured in the Stripe
     // Account dashboard, we only set the version if something else
     // has been configured by an administrator.
-    $api_version = $payment_method['settings']['commerce_stripe_api_version'];
-    if ($api_version <> COMMERCE_STRIPE_API_ACCOUNT_DEFAULT) {
-      if ($api_version == COMMERCE_STRIPE_API_VERSION_CUSTOM) {
-        $api_version = check_plain($payment_method['settings']['commerce_stripe_api_version_custom']);
-      }
+    if (!empty($payment_method['settings']['commerce_stripe_api_version'])) {
+      $api_version = $payment_method['settings']['commerce_stripe_api_version'];
 
-      try {
-        \Stripe\Stripe::setApiVersion($api_version);
-      }
-      catch (\Stripe\Error\InvalidRequest $e) {
-        watchdog('stripe', 'Stripe setApiVersion Exception: %error',
-          array('%error' => $e->getMessage()), WATCHDOG_ERROR);
+      if ($api_version <> COMMERCE_STRIPE_API_ACCOUNT_DEFAULT) {
+        if ($api_version == COMMERCE_STRIPE_API_VERSION_CUSTOM) {
+          $api_version = check_plain($payment_method['settings']['commerce_stripe_api_version_custom']);
+        }
 
-        drupal_set_message(t('Stripe API Error: :error',
-          array(':error' => $e->getMessage())), 'error');
+        try {
+          \Stripe\Stripe::setApiVersion($api_version);
+        }
+        catch (\Stripe\Error\InvalidRequest $e) {
+          watchdog('stripe', 'Stripe setApiVersion Exception: %error',
+            array('%error' => $e->getMessage()), WATCHDOG_ERROR);
+
+          drupal_set_message(t('Stripe API Error: :error',
+            array(':error' => $e->getMessage())), 'error');
+        }
       }
     }
   }
