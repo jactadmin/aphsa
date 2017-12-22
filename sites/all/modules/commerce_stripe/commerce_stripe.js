@@ -6,7 +6,7 @@
 (function ($) {
   Drupal.behaviors.stripe = {
     attach: function (context, settings) {
-      if (settings.stripe.fetched == null) {
+      if (typeof settings.stripe.fetched == 'undefined') {
         settings.stripe.fetched = true;
 
         // Clear the token every time the payment form is loaded. We only need the token
@@ -130,24 +130,24 @@
               };
 
               var responseHandler = makeResponseHandler(
-                $("#edit-continue").closest("form"),
-                $('div.payment-errors'),
-                function (form$) {
-                  // Enable the submit button to allow resubmission.
-                  form$.find('.checkout-continue').removeAttr("disabled").removeClass("auth-processing");
-                  submitButtons$.removeAttr('disabled').removeClass('auth-processing');
-                  // Hide progress animated gif.
-                  $('.checkout-processing').hide();
-                },
-                function (form$) {
-                  var $btnTrigger = $('.form-submit.auth-processing').eq(0);
-                  var trigger$ = $("<input type='hidden' />").attr('name', $btnTrigger.attr('name')).attr('value', $btnTrigger.attr('value'));
-                  form$.append(trigger$);
-                }
+                  $("#edit-continue").closest("form"),
+                  $('div.payment-errors'),
+                  function (form$) {
+                    // Enable the submit button to allow resubmission.
+                    form$.find('.checkout-continue').removeAttr("disabled").removeClass("auth-processing");
+                    submitButtons$.removeAttr('disabled').removeClass('auth-processing');
+                    // Hide progress animated gif.
+                    $('.checkout-processing').hide();
+                  },
+                  function (form$) {
+                    var $btnTrigger = $('.form-submit.auth-processing').eq(0);
+                    var trigger$ = $("<input type='hidden' />").attr('name', $btnTrigger.attr('name')).attr('value', $btnTrigger.attr('value'));
+                    form$.append(trigger$);
+                  }
               );
 
               createToken(cardFields, responseHandler);
-	    }
+            }
             else if (settings.stripe.integration_type == 'checkout') {
               var token_created = false;
               var handler = StripeCheckout.configure({
@@ -182,6 +182,48 @@
                 handler.close();
               });
             }
+
+            // Prevent the form from submitting with the default action.
+            return false;
+          }
+        });
+
+        $('.page-admin-commerce-orders-payment').delegate('#edit-submit', 'click', function(event) {
+          // Prevent the Stripe actions to be triggered if hidden field hasn't been set
+          var cs_terminal = $('input[name=commerce_stripe_terminal]').val();
+          if ( cs_terminal > 0) {
+            $(this).addClass('auth-processing');
+
+            // Prevent the form from submitting with the default action.
+            event.preventDefault();
+
+            // Disable the submit button to prevent repeated clicks.
+            $('.form-submit').attr("disabled", "disabled");
+
+            var cardFields = {
+              number: 'edit-payment-details-credit-card-number',
+              cvc: 'edit-payment-details-credit-card-code',
+              exp_month: 'edit-payment-details-credit-card-exp-month',
+              exp_year: 'edit-payment-details-credit-card-exp-year',
+              name: 'edit-payment-details-credit-card-owner'
+            };
+
+            var responseHandler = makeResponseHandler(
+                $("#edit-submit").closest("form"),
+                $('div.payment-errors'),
+                function () {
+                  $(this).removeClass('auth-processing');
+                  // Enable the submit button to allow resubmission.
+                  $('.form-submit').removeAttr("disabled");
+                },
+                function (form$) {
+                  var $btnTrigger = $('.form-submit.auth-processing').eq(0);
+                  var trigger$ = $("<input type='hidden' />").attr('name', $btnTrigger.attr('name')).attr('value', $btnTrigger.attr('value'));
+                  form$.append(trigger$);
+                }
+            );
+
+            createToken(cardFields, responseHandler);
 
             // Prevent the form from submitting with the default action.
             return false;
