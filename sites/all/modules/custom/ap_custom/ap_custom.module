@@ -1,10 +1,5 @@
 <?php
 
-function ap_custom_menu_alter(&$items){
-    
-    
-}
-
 /*
 function ap_custom_menu() {
   $items['user/%user/user-agreement'] = array(
@@ -18,20 +13,20 @@ function ap_custom_menu() {
 
   return $items;
 }
-*/
 
-function accesspoint_form_alter(&$form, &$form_state, $form_id) {
+
+function ap_custom_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'user_profile_form') {
     unset($form['contact']);
   }
 }
-
+**/
 /**
 * Implementation of hook_form_alter()
 */
 function ap_custom_form_alter(&$form, &$form_state, $form_id) {
-
   switch ($form_id) {
+    
     case 'webform_client_form_14630':
       $nid = $_GET['id'];
       $node = node_load($nid);
@@ -50,6 +45,6 @@ function ap_custom_form_alter(&$form, &$form_state, $form_id) {
        // dpm($form);
       return $form;
      break;
-
+     
   }
 }

@@ -22,6 +22,20 @@ function addressfield_field_views_data($field) {
       $data[$table_name][$column_real_name]['filter']['handler'] = 'addressfield_views_handler_filter_country';
     }
   }
+  
+  // Add a handler for administrative area.
+  foreach ($field['storage']['details']['sql'] as $type => $tables) {
+    foreach ($tables as $table_name => $columns) {
+      if (!isset($columns['administrative_area'])) {
+        continue;
+      }
+      $column_real_name = $columns['administrative_area'];
+      if (!isset($data[$table_name][$column_real_name]['filter'])) {
+        continue;
+      }
+      $data[$table_name][$column_real_name]['filter']['handler'] = 'addressfield_views_handler_filter_administrative_area';
+    }
+  }
 
   // Only expose these components as Views field handlers.
   $implemented = array(
