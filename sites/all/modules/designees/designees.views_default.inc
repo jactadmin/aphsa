@@ -1,139 +1,14 @@
 <?php
 /**
  * @file
- * designee_directory.views_default.inc
+ * designees.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function designee_directory_views_default_views() {
+function designees_views_default_views() {
   $export = array();
-
-  $view = new view();
-  $view->name = 'designee_admin';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'eck_designee';
-  $view->human_name = 'Designee admin';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Designee admin';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'field_designee_last_name' => 'field_designee_last_name',
-    'field_designee_first_name' => 'field_designee_first_name',
-    'field_designee_email' => 'field_designee_email',
-    'views_bulk_operations' => 'views_bulk_operations',
-    'id' => 'id',
-  );
-  $handler->display->display_options['style_options']['default'] = '-1';
-  $handler->display->display_options['style_options']['info'] = array(
-    'field_designee_last_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_designee_first_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_designee_email' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'views_bulk_operations' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'id' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-  );
-  /* Field: Designee: Last Name */
-  $handler->display->display_options['fields']['field_designee_last_name']['id'] = 'field_designee_last_name';
-  $handler->display->display_options['fields']['field_designee_last_name']['table'] = 'field_data_field_designee_last_name';
-  $handler->display->display_options['fields']['field_designee_last_name']['field'] = 'field_designee_last_name';
-  /* Field: Designee: First Name */
-  $handler->display->display_options['fields']['field_designee_first_name']['id'] = 'field_designee_first_name';
-  $handler->display->display_options['fields']['field_designee_first_name']['table'] = 'field_data_field_designee_first_name';
-  $handler->display->display_options['fields']['field_designee_first_name']['field'] = 'field_designee_first_name';
-  /* Field: Designee: Email */
-  $handler->display->display_options['fields']['field_designee_email']['id'] = 'field_designee_email';
-  $handler->display->display_options['fields']['field_designee_email']['table'] = 'field_data_field_designee_email';
-  $handler->display->display_options['fields']['field_designee_email']['field'] = 'field_designee_email';
-  /* Field: Designee: Id */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'eck_designee';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Field: Designee: Edit link */
-  $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
-  $handler->display->display_options['fields']['edit_link']['table'] = 'eck_designee';
-  $handler->display->display_options['fields']['edit_link']['field'] = 'edit_link';
-  $handler->display->display_options['fields']['edit_link']['label'] = '';
-  $handler->display->display_options['fields']['edit_link']['element_label_colon'] = FALSE;
-  /* Field: Designee: Delete link */
-  $handler->display->display_options['fields']['delete_link']['id'] = 'delete_link';
-  $handler->display->display_options['fields']['delete_link']['table'] = 'eck_designee';
-  $handler->display->display_options['fields']['delete_link']['field'] = 'delete_link';
-  $handler->display->display_options['fields']['delete_link']['label'] = '';
-  $handler->display->display_options['fields']['delete_link']['element_label_colon'] = FALSE;
-  /* Field: Bulk operations: Designee */
-  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_designee';
-  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['label'] = 'Actions';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['row_clickable'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
-    'action::views_bulk_operations_delete_item' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'skip_permission_check' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'log' => 0,
-      ),
-    ),
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'admin/content/designee-admin';
-  $handler->display->display_options['menu']['title'] = 'Designees';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $export['designee_admin'] = $view;
 
   $view = new view();
   $view->name = 'designee_directory';

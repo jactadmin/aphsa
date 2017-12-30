@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * designee_directory.features.field_instance.inc
+ * designees.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function designee_directory_field_default_field_instances() {
+function designees_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'designee-designee-field_designee_address'.

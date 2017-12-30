@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Designees feature.
+ */
+
+include_once 'designees.features.inc';
